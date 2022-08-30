@@ -1,0 +1,14 @@
+
+@media screen and (min-width: 500px) {
+    .App {
+      width: 400px;
+      /* background-color: lightgreen; */
+    }
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .App {
+      width: 800px;
+      /* background-color: lavender; */
+    }
+  }
