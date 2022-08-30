@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./App.module.css";
-import { Header, Container } from "./pages";
+import { Header, Container } from "./Pages";
 import { useState, useEffect } from "react";
 import { JOKE_STATE, Joke } from "./types";
 

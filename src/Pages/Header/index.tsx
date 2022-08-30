@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../components";
+import { Button } from "../../Components";
 import styles from "./index.module.css";
 
 interface IHeaderProps {

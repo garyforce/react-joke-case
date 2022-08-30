@@ -1,0 +1,32 @@
+.quote {
+    display: flex;
+    height: 150px;
+    position: relative;
+    margin: 40px;
+    /*justify-content: center; */
+}
+.quote .quote_mark {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: -50px;
+    font-size: 300px;
+    color: rgb(227, 227, 227);
+}
+.quote:first-child {
+    flex-direction: row;
+}
+.quote:first-child .quote_mark::after {
+    content: open-quote;
+}
+.quote:last-child {
+    flex-direction: row-reverse;
+}
+.quote:last-child .quote_mark::after {
+    content: close-quote;
+}
+.quote .text {
+    margin: 0px 40px;
+    position: absolute;
+    top: 30px;
+    font-size: 25px;
+}

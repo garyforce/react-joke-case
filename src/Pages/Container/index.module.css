@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h2 {
+    margin-top: 50px;
+    text-align: center;
+    color: lightgray;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
