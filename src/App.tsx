@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styles from "./App.module.css";
+import { Header, Container } from "./Pages";
+import { useState, useEffect } from "react";
+import { JOKE_STATE, Joke } from "./types";
+
+const JOKE_REQUEST = "https://karljoke.herokuapp.com/jokes/random";
 
 function App() {
+  const [currentState, setCurrentState] = useState<JOKE_STATE>(
+    JOKE_STATE.STATE_LOADING
+  );
+  const [loadingError, setLoadingError] = useState<boolean>(false);
+  const [joke, setJoke] = useState<undefined | Joke>();
+
+  const loadJoke = async () => {
+    setCurrentState(JOKE_STATE.STATE_LOADING);
+    setLoadingError(false);
+    try {
+      const response = await fetch(JOKE_REQUEST);
+      setJoke(await response.json());
+      setCurrentState(JOKE_STATE.STATE_DONE);
+    } catch (err) {
+      setCurrentState(JOKE_STATE.STATE_DONE);
+      setLoadingError(true);
+    }
+  };
+
+  useEffect(() => {
+    loadJoke();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.App}>
+      <Header
+        onGetNewJoke={() => {
+          loadJoke();
+        }}
+      />
+      <Container
+        joke={joke}
+        currentState={currentState}
+        errorOccured={loadingError}
+      />
     </div>
   );
 }
